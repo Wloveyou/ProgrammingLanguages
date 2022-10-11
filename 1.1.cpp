@@ -8,7 +8,7 @@ using namespace std;
 * \param y Второй параметр функции.
 * \return Значение функции.
 */
-double getA(double x, double y, double z);
+const double getA(const double x, const double y, const double z);
 
 /**
 * \brief Функция расчета по заданной формуле.
@@ -16,7 +16,7 @@ double getA(double x, double y, double z);
 * \param z Второй параметр функции.
 * \return Значение функции.
 */
-double getB(double x, double y, double z);
+const double getB(const double x, const double y, const double z);
 
 /**
 * \brief Точка входа в программу.
@@ -33,11 +33,11 @@ int main()
     std::cout << "a = " << a << " b = " << b << std::endl;
     return 0; 
 }
-    double getA(double x, double y, double z)
+    const double getA(const double x, const double y, const double z)
 {
     return sin(x) / sqrt(pow (y, 2) + pow(sin(x), 2)) - pow(x,2) * y * z;
 }
-    double getB(double x, double y, double z)
+    const double getB(const double x, const double y, const double z)
 {
 return exp(-z*x) * sqrt(x+1) + exp(-y*x);
 }
