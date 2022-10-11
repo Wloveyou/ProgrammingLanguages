@@ -1,6 +1,7 @@
-#define _USE_MATH_DEFINES // for C++
-      #include <cmath>
-      #include <iostream>
+#include <cmath>
+#include <iostream>
+using namespace std;
+
 /**
 * \brief Функция расчета по заданной формуле.
 * \param x Первый параметр функции.
@@ -32,10 +33,10 @@ std::cout << "x = " << x << " y = " << y << " z = " << z << "\n";
 std::cout << "a = " << a << " b = " << b << std::endl;
 return 0; }
 double getA(double x, double y, double z){
- return sin (x) / pow( pow (y, 2) + pow ( sin(x), 2),1.0/2) - pow( x,2) * y * z;
+ return sin (x) / sqrt( pow (y, 2) + pow ( sin(x), 2)) - pow( x,2) * y * z;
  }
 
 double getB( double x, double y, double z)
 {
-return exp(-z*x) * pow( x+1, 1.0/2) + exp(-y*x);
+return exp(-z*x) * sqrt(x+1) + exp(-y*x);
 }
