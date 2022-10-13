@@ -41,7 +41,7 @@ enum class userInput
 {
     SUMM,
     DIFF,
-    AV
+    AVG
 };
 
 int main()
@@ -51,7 +51,7 @@ int main()
     cout << "Введите число, соответствующее заданию:\n"
     << static_cast<int>(userInput::SUMM) << " - Вычисляет сумму чисел a и b.\n"
     << static_cast<int>(userInput::DIFF) << " - Вычисляет разность чисел a и b.\n"
-    << static_cast<int>(userInput::AV) << " - Вычисляет среднее арифметическое значение чисел a и b.\n";
+    << static_cast<int>(userInput::AVG) << " - Вычисляет среднее арифметическое значение чисел a и b.\n";
 
     int input = 0;
     cin >> input;
@@ -74,7 +74,7 @@ int main()
             cout << "Разность b - a = " << (-1)*t << endl;
             break;
         }
-        case userInput::AV:
+        case userInput::AVG:
         {
             const double t = getAv(a, b);
             cout << "Среднее арифметическое a и b = " << t << endl;
@@ -95,14 +95,12 @@ double getVariable(const string& message)
 
 const double getSumm(const double a, const double b)
 {
-    const double t = a + b;
-    return t;
+    return (a + b);
 }
 
 const double getDiff(const double a, const double b)
 {
-    const double t = a - b;
-    return t;
+    return (a - b);
 }
 
 const double getAv(const double a, const double b)
