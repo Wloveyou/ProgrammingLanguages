@@ -4,13 +4,6 @@
 using namespace std;
 
 /**
- * \breaf Проверка y при заданоом x.
- * @param x Параметр функциию
- * @return true Если y существует при заданном x.
- */
-bool IsExists(const double x);
-
-/**
  * /breaf Функиця расчета по заданной формуле
  * @param x Параметр функции
  * @return true Если y существует при заданном x.
@@ -30,14 +23,8 @@ int main()
 
     while(x < xFinish + step )
     {
-        if (IsExists(x))
-        {
-            const double y = Calculation(x);
-            cout << x << " " << "\n";
-        } else
-        {
-            cout << x << " " << "Нет значения \n";
-        }
+        const double y = Calculation(x);
+        cout << x << " " << "\n";
         x += step;
     }
 
