@@ -31,12 +31,6 @@ int main()
     return 0;
 }
 
-bool IsExists(const double x)
-{
-    return (abs(cos(x)) > numeric_limits<double>::min());
-
-}
-
 double Calculation (const double x)
 {
     return (cos(x) - exp(-(pow(x,2))/2) + x - 1);
