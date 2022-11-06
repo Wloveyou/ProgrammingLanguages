@@ -49,7 +49,7 @@ int main()
 
 double getCurrentNum(const int k)
 {
-    return 1 + k  / (k + 2)*!
+    return 1 + k  / (k + 2)
 }
 
 double getSumN(int k, int n)
