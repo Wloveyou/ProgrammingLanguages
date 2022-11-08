@@ -30,6 +30,8 @@ double getSumE(int k, double e);
  * \return В случае успеха возвращает 0
  */
 
+int factorial(int n);
+
 int main()
 {
     int k = 1;
@@ -49,7 +51,7 @@ int main()
 
 double getCurrentNum(const int k)
 {
-    return 1 + k  / (k + 2)
+    return 1 + k  / factorial(k+2)
 }
 
 double getSumN(int k, int n)
@@ -77,4 +79,13 @@ double getSumE(int k, double e)
     }
 
     return sum;
+}
+int factorial(int n)
+{
+  int factorial = 1;
+  for (size_t i = 1; i <= n; i++)
+  {
+    factorial = factorial * i;
+  }
+  return factorial;
 }
