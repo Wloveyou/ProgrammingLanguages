@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -7,7 +8,7 @@ using namespace std;
  * \param k Переменная элемента ряда.
  * \return Возвращает значение текущего элемента.
 **/
-double getCurrentNum(int k);
+double getCurrentNum(const size_t k);
 
 /**
  * \brief Функция для вычисления суммы первых n элементов ряда.
@@ -15,7 +16,7 @@ double getCurrentNum(int k);
  * \param k Переменная элемента ряда.
  * \return Возвращает сумму первых n элементов ряда.
  **/
-double getSumN(int k, int n);
+double getSumN(const int n);
 
 /**
  *\brief Функция для вычисления суммы членов ряда не меньших числа e.
@@ -23,18 +24,16 @@ double getSumN(int k, int n);
  *\param k Переменная элемента ряда.
  *\return Возвращает сумму членов ряда не меньших числа e.
 **/
-double getSumE(int k, double e);
+double getSumE(const size_t k, double e);
 
 /**
  * \brief Точка входа в программу
  * \return В случае успеха возвращает 0
  */
 
-int factorial(int n);
-
 int main()
 {
-    int k = 1;
+    size_t k = 1;
     int n;
     double e = 0.0;
 
@@ -43,35 +42,35 @@ int main()
     cout << "\nВведите значение e: ";
     cin >> e;
 
-    cout << "\nСумма первых n членов: " << getSumN(k, n);
+    cout << "\nСумма первых n членов: " << getSumN(n);
     cout << "\nСумма членов не меньших числа е: " << getSumE(k, e) << endl;
 
     return 0;
 }
 
-double getCurrentNum(const int k)
+double getCurrentNum(const size_t k)
 {
-    return 1 + k  / factorial(k+2);
+    return 1 + k  / pow(((k+2)+1),2);
 }
 
-double getSumN(int k, int n)
+double getSumN(const int n)
 {
-    double sum = 0;
+    double sum = 0.0;
     for (int i = 1; i <= n; i++)
     {
-        sum += getCurrentNum(k);
-        k++;
+        size_t k = k + 1;
+        sum = sum + getCurrentNum(k);
     }
 
     return sum;
 }
 
-double getSumE(int k, double e)
+double getSumE(size_t k, double e)
 {
     double sum = 0;
     double current = getCurrentNum(k);
 
-    while (current > e)
+    while (abs(current) > e)
     {
         sum += current;
         k++;
@@ -79,13 +78,4 @@ double getSumE(int k, double e)
     }
 
     return sum;
-}
-int factorial(int n)
-{
-  int factorial = 1;
-  for (size_t i = 1; i <= n; i++)
-  {
-    factorial = factorial * i;
-  }
-  return factorial;
 }
