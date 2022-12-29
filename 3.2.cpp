@@ -1,71 +1,80 @@
-#include <iostream>
-#include <cmath>
-
-using namespace std;
-
-/**
- * \brief функция определения текущего элемента ряда.
- * param k - переменная для вычисления элемента ряда.
- * \return значение текущего элемент ряда.
-*/
-double getCurrent(const int k);
-
-/**
- * \brief функция вычисления суммы первых n элементов ряда.
- * param n - количество элементов ряда.
- * param k - переменная для вычисления элемента ряда.
- * \return сумма первых n элементов ряда.
- */
-double getSumm1(int n, int k);
-
-/**
- * \brief вычисление суммы членов ряда не меньших числа e.
- * param e - константа по условию.
- * param k - переменная для вычисление элемента ряда.
- * \return сумма членов ряда не меньших числа e.
-*/
-double getSumm2(double e, int k);
-
-/**
- * \brief точка входа в программу.
- * return 0 в случае успеха.
-*/
-int main()
-{
-    setlocale(LC_ALL, "Russian");
-    int n;
-    double e = 0.0;
-    int k = 0;
-    cout << "Введите количество членов ряда" << endl;
-    cin >> n;
-    cout << "Введите e ";
-    cin >> e;
-    cout << getSumm1(n, k) << endl;
-    cout << getSumm2(e, k);
-    return 0;
-}
-
-double getCurrent(const int k) {
-    return (1.0 + k) / pow(((k + 2) + 1), 2);
-}
-
-double getSumm1(int n, int k) {
-    double sum1 = 0.0;
-    for (int i = 1; i <= n; i++) {
-        sum1 = sum1 + getCurrent(k);
-        k = k + 1;
-    }
-    return sum1;
-}
-
-double getSumm2(double e, int k) {
-    double cur;
-    double sum2 = 0.0;
-    cur = getCurrent(k);
-    while (cur > e) {
-        sum2 = sum2 + cur;
-        k++;
-        cur = getCurrent(k);
-    }
-    return sum2;
+#include <iostream> 
+#include <cmath> 
+ 
+using namespace std; 
+ 
+/** 
+ * \brief Функция для нахождения текущего элемента. 
+ * \param k Переменная элемента ряда. 
+ * \return Возвращает значение текущего элемента. 
+**/ 
+double getCurrentNum(const size_t k); 
+ 
+/** 
+ * \brief Функция для вычисления суммы первых n элементов ряда. 
+ * \param n Количество элементов ряда. 
+ * \param k Переменная элемента ряда. 
+ * \return Возвращает сумму первых n элементов ряда. 
+ **/ 
+double getSumN(const int n); 
+ 
+/** 
+ *\brief Функция для вычисления суммы членов ряда не меньших числа e. 
+ *\param e Заданное число. 
+ *\param k Переменная элемента ряда. 
+ *\return Возвращает сумму членов ряда не меньших числа e. 
+**/ 
+double getSumE(const double e); 
+ 
+/** 
+ * \brief Точка входа в программу 
+ * \return В случае успеха возвращает 0 
+ */ 
+ 
+int main() 
+{ 
+    size_t k = 1; 
+    int n; 
+    double e = 0.0; 
+ 
+    cout << "Введите количество членов ряда: "; 
+    cin >> n; 
+    cout << "\nВведите значение e: "; 
+    cin >> e; 
+ 
+    cout << "\nСумма первых n членов: " << getSumN(n); 
+    cout << "\nСумма членов не меньших числа е: " << getSumE(e) << endl; 
+ 
+    return 0; 
+} 
+ 
+double getCurrentNum(const size_t k) 
+{ 
+    return 1.0*(k + 2) / (k + 3) * (1 + k); 
+} 
+ 
+double getSumN(const int n) 
+{ 
+    double sum = 0.0; 
+    for (size_t k = 1; k <= n; k++) 
+    { 
+        sum = sum + getCurrentNum(k); 
+    } 
+ 
+    return sum; 
+} 
+ 
+double getSumE(const double e) 
+{ 
+    int k = 1;
+    double sum = 0; 
+    double current = getCurrentNum(k); 
+ 
+    while (abs(current) > e) 
+    { 
+        sum += current; 
+        k += 1; 
+    } 
+ 
+    return sum; 
 }
